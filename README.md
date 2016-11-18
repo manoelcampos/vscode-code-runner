@@ -2,7 +2,7 @@
 
 [![Marketplace Version](http://vsmarketplacebadge.apphb.com/version/formulahendry.code-runner.svg)](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) [![Installs](http://vsmarketplacebadge.apphb.com/installs/formulahendry.code-runner.svg)](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) [![Rating](http://vsmarketplacebadge.apphb.com/rating/formulahendry.code-runner.svg)](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) [![Build Status](https://travis-ci.org/formulahendry/vscode-code-runner.svg?branch=master)](https://travis-ci.org/formulahendry/vscode-code-runner)
 
-Run code snippet or code file for multiple languages: **JavaScript, PHP, Python, Perl, Ruby, Go, Lua, Groovy, PowerShell, BAT/CMD, BASH/SH, F# Script, C# Script, VBScript, TypeScript, CoffeeScript, Scala, Swift, Julia, Crystal, OCaml Script**
+Run code snippet or code file for multiple languages: **C, C++, Java, JavaScript, PHP, Python, Perl, Ruby, Go, Lua, Groovy, PowerShell, BAT/CMD, BASH/SH, F# Script, C# Script, VBScript, TypeScript, CoffeeScript, Scala, Swift, Julia, Crystal, OCaml Script**
 
 ## Features
 
@@ -17,7 +17,7 @@ Run code snippet or code file for multiple languages: **JavaScript, PHP, Python,
 ## Usages
 
 * Open code file or select code snippet in Text Editor, then use shortcut `Ctrl+Alt+N`, or press `F1` and then select/type `Run Code`, or right click the Text Editor and then click `Run Code` in context menu, the code will run and the output will be shown in the Output Window.
-* To stop the running code, use shortcut `Ctrl+Alt+M`, or press `F1` and then select/type `Stop Code Run`
+* To stop the running code, use shortcut `Ctrl+Alt+M`, or press `F1` and then select/type `Stop Code Run`, or right click the Output Channel and then click `Stop Code Run` in context menu
 
 ![Usage](images/usage.gif)
 
@@ -39,10 +39,18 @@ e.g. To set the executor PATH for ruby, php and html:
         "perl": "perl",
         "ruby": "C:\\Ruby23-x64\\bin\\ruby.exe",
         "go": "go run",
-        ".html": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\""
+        ".html": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"",
+        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "gcc $fullFileName && ./a.out"
     }
 }
 ```
+**Supported customized parameters**
+  * $dir: The directory of the code file being run
+  * $fullFileName: The full name of the code file being run
+  * $fileName: The base name of the code file being run, that is the file without the directory
+  * $fileNameWithoutExt: The base name of the code file being run without its extension
+
 **Please take care of the back slash and the space in file path of the executor**
   * Back slash: please use `\\`
   * If there ares spaces in file path, please use `\"` to surround your file path
